@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Persistence.Sql", "CandidatesManagement.Persistence.Sql\CandidatesManagement.Persistence.Sql.csproj", "{575A3AB8-C365-4B11-BE86-29EDACF9B83E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.UnitTests", "CandidatesManagement.UnitTests\CandidatesManagement.UnitTests.csproj", "{50FA3333-57AA-4911-847B-16BB94C8E6DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{575A3AB8-C365-4B11-BE86-29EDACF9B83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{575A3AB8-C365-4B11-BE86-29EDACF9B83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{575A3AB8-C365-4B11-BE86-29EDACF9B83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
