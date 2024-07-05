@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.UnitTests", "CandidatesManagement.UnitTests\CandidatesManagement.UnitTests.csproj", "{50FA3333-57AA-4911-847B-16BB94C8E6DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Infrastructure", "CandidatesManagement.Infrastructure\CandidatesManagement.Infrastructure.csproj", "{33B0D4E5-6241-459B-B884-6114187ED632}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FA3333-57AA-4911-847B-16BB94C8E6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B0D4E5-6241-459B-B884-6114187ED632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B0D4E5-6241-459B-B884-6114187ED632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B0D4E5-6241-459B-B884-6114187ED632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B0D4E5-6241-459B-B884-6114187ED632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
