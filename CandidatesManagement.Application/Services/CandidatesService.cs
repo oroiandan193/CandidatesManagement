@@ -1,8 +1,6 @@
 ﻿using CandidatesManagement.Application.Contracts;
 using CandidatesManagement.Application.Contracts.Dtos;
 using CandidatesManagement.Core.Repositories;
-using Microsoft.Extensions.Logging;
-using System.Data;
 
 namespace CandidatesManagement.Application.Services
 {
@@ -25,12 +23,14 @@ namespace CandidatesManagement.Application.Services
             {
                 existing.UpdateFrom(candidate);
 
-                await _repository.UpdateJobCandidateAsync(existing);
+                _repository.UpdateJobCandidate(existing);
             }
             else
             {
                 await _repository.InsertJobCandidateAsync(candidate);
             }
+
+            await _repository.SaveChangesAsync();
         }
     }
 }

@@ -59,8 +59,10 @@ public class CandidatesServiceTests
         await candidatesService.UpsertJobCandidateAsync(dto);
 
         // Assert
-        mockRepository.Verify(r => r.UpdateJobCandidateAsync(candidateEntity), Times.Never);
+        mockRepository.Verify(r => r.UpdateJobCandidate(candidateEntity), Times.Never);
         mockRepository.Verify(r => r.InsertJobCandidateAsync(It.IsAny<JobCandidate>()), Times.Once);
+
+        mockRepository.Verify(r => r.SaveChangesAsync(), Times.Once);
     }
 
     [Test]
@@ -92,6 +94,8 @@ public class CandidatesServiceTests
 
         // Assert
         mockRepository.Verify(r => r.InsertJobCandidateAsync(It.IsAny<JobCandidate>()), Times.Never);
-        mockRepository.Verify(r => r.UpdateJobCandidateAsync(candidateEntity), Times.Once);
+        mockRepository.Verify(r => r.UpdateJobCandidate(candidateEntity), Times.Once);
+
+        mockRepository.Verify(r => r.SaveChangesAsync(), Times.Once);
     }
 }

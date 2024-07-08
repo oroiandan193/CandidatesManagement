@@ -14,24 +14,26 @@ namespace CandidatesManagement.Persistence.Sql.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task UpdateJobCandidateAsync(JobCandidate jobCandidate)
+
+        public void UpdateJobCandidate(JobCandidate jobCandidate)
         {
             _dbContext.JobCandidates.Update(jobCandidate);
-
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task InsertJobCandidateAsync(JobCandidate jobCandidate)
         {
             await _dbContext.JobCandidates.AddAsync(jobCandidate);
-
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<JobCandidate?> FindByEmailAddressAsync(EmailAddress emailAddress)
         {
             return await _dbContext.JobCandidates.Where(jc => jc.EmailAddress == emailAddress)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

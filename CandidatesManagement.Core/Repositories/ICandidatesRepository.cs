@@ -7,8 +7,10 @@ namespace CandidatesManagement.Core.Repositories
     {
         Task<JobCandidate?> FindByEmailAddressAsync(EmailAddress emailAddress);
 
-        Task UpdateJobCandidateAsync(JobCandidate jobCandidate);
+        void UpdateJobCandidate(JobCandidate jobCandidate);
 
         Task InsertJobCandidateAsync(JobCandidate jobCandidate);
+
+        Task SaveChangesAsync();
     }
 }
