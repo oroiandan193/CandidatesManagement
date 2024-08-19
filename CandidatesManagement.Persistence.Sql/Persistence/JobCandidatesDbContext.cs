@@ -76,6 +76,10 @@ namespace CandidatesManagement.Persistence.Sql.Persistence
                     .IsRequired(false);
             });
 
+            // Add the discriminator column
+            builder.Property<string>("Discriminator")
+                .HasMaxLength(50);
+
             builder.Property(c => c.Version)
                 .IsRowVersion();
         }

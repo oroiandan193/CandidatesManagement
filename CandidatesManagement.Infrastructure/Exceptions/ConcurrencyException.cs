@@ -2,8 +2,13 @@
 {
     public class ConcurrencyException : Exception
     {
+        public string? ObjectIdentifier { get; init; }
+
         public ConcurrencyException() { }
 
-        public ConcurrencyException(string message) : base(message) { }
+        public ConcurrencyException(string objectIdentifier, string message) : base(message) 
+        {
+            ObjectIdentifier = objectIdentifier;
+        }
     }
 }

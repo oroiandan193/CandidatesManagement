@@ -26,7 +26,7 @@ namespace CandidatesManagement.Application.Contracts.Dtos
 
         public JobCandidate ToEntity() 
         {
-            return new JobCandidate(
+            return JobCandidate.CreateNewCandidateRegistration(
                 FirstName,
                 LastName,
                 string.IsNullOrEmpty(PhoneNumber) ? new Core.ValueObjects.PhoneNumber(PhoneNumber) : null,

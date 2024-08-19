@@ -7,7 +7,6 @@ namespace CandidatesManagement.Application.Services
     internal class CandidatesService : ICandidatesService
     {
         private readonly ICandidatesRepository _repository;
-
         public CandidatesService(ICandidatesRepository repository)
         {
             _repository = repository;
