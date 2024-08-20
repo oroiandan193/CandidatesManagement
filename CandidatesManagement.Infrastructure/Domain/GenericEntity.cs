@@ -1,4 +1,4 @@
-﻿namespace CandidatesManagement.Infrastructure
+﻿namespace CandidatesManagement.Infrastructure.Domain
 {
     public class GenericEntity<T>
     {

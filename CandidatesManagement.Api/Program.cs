@@ -2,6 +2,7 @@ using CandidatesManagement.Api.Middlewares;
 using CandidatesManagement.Application;
 using CandidatesManagement.Application.Contracts;
 using CandidatesManagement.Application.Contracts.Dtos;
+using CandidatesManagement.Infrastructure;
 using CandidatesManagement.Persistence.Sql;
 using FluentValidation;
 
@@ -19,6 +20,7 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services
+    .ConfigureInfrastructureServices()
     .ConfigurePersistence(builder.Configuration)
     .ConfigureApplicationServices();
 

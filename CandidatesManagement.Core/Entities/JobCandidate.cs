@@ -1,5 +1,4 @@
 ﻿using CandidatesManagement.Core.ValueObjects;
-using CandidatesManagement.Infrastructure;
 using CandidatesManagement.Infrastructure.Domain;
 
 namespace CandidatesManagement.Core.Entities
@@ -29,7 +28,6 @@ namespace CandidatesManagement.Core.Entities
             LinkedInProfile = linkedInProfileLink;
             GithubProfile = githubProfileLink;
             Comment = comment;
-            RegistrationInfo = registrationInfo;
         }
 
         public void UpdateFrom(JobCandidate candidate)

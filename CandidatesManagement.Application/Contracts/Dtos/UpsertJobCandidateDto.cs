@@ -1,6 +1,4 @@
 ﻿using CandidatesManagement.Core.Entities;
-using System.Globalization;
-using System.Text.Json.Serialization;
 
 namespace CandidatesManagement.Application.Contracts.Dtos
 {
