@@ -16,7 +16,8 @@ namespace CandidatesManagement.Persistence.Sql
                 options.UseSqlServer(configuration.GetConnectionString("JobCandidatesDbContext")));
 
             //register repos.
-            services.AddScoped<ICandidatesRepository, CandidatesRepository>();
+            services.AddScoped<CandidatesRepository>();
+            services.AddScoped<ICandidatesRepository, CachedCandidatesRepository>();
 
             return services;
         }

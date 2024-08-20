@@ -26,6 +26,11 @@ namespace CandidatesManagement.Infrastructure.Cache
             return deserialized;
         }
 
+        public Task<T?> GetOrAddAsync<T>(string key, Func<T> factory, CancellationToken cancellationToken = default) where T : class
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
         {
             await _distributedCache.RemoveAsync(key, cancellationToken);
