@@ -16,21 +16,11 @@ namespace CandidatesManagement.Persistence.Sql.Repositories
             _cacheService = cacheService;
         }
 
-        public async Task<JobCandidate?> FindByEmailAddressAsync(EmailAddress emailAddress)
-        {
-            var candidate = await _cacheService.GetAsync<JobCandidate>(emailAddress.Value);
-
-            if (candidate is not null)
+        public async Task<JobCandidate?> FindByEmailAddressAsync(EmailAddress emailAddress) =>
+            await _cacheService.GetOrAddAsync<JobCandidate>(emailAddress.Value, async () =>
             {
-                return candidate;
-            }
-
-            candidate = await _decorated.FindByEmailAddressAsync(emailAddress);
-
-            await _cacheService.SetAsync(emailAddress.Value, candidate);
-
-            return candidate;
-        }
+                return await _decorated.FindByEmailAddressAsync(emailAddress);
+            });
 
         public async Task InsertJobCandidateAsync(JobCandidate jobCandidate)
         {

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
 
 namespace CandidatesManagement.Infrastructure.Cache
 {
@@ -26,9 +27,27 @@ namespace CandidatesManagement.Infrastructure.Cache
             return deserialized;
         }
 
-        public Task<T?> GetOrAddAsync<T>(string key, Func<T> factory, CancellationToken cancellationToken = default) where T : class
+        public async Task<T?> GetOrAddAsync<T>(string key, Func<Task<T?>> factory, CancellationToken cancellationToken = default) where T : class
         {
-            throw new NotImplementedException();
+            var cachedValue = await _distributedCache.GetStringAsync(key, cancellationToken);
+
+            if (!string.IsNullOrEmpty(cachedValue))
+            {
+                return System.Text.Json.JsonSerializer.Deserialize<T>(cachedValue);
+            }
+
+            var data = await factory();
+
+            if (data == null)
+            {
+                return null;
+            }
+
+            var serialized = System.Text.Json.JsonSerializer.Serialize(data);
+
+            await _distributedCache.SetStringAsync(key, serialized);
+
+            return data;
         }
 
         public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
