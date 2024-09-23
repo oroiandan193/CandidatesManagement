@@ -1,9 +1,7 @@
 name: Build and Deploy ASP.NET Core App to EC2
 
 on:
-  push:
-    branches:
-      - main  # Trigger the workflow on push to the main branch
+  workflow_dispatch:  # This enables manual runs from the GitHub UI
 
 jobs:
   build:
