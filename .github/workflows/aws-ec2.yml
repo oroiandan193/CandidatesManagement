@@ -63,7 +63,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd "${{ secrets.APP_DIRECTORY }}/build"
-            cd build
             ls -R
             dotnet CandidatesManagement.Api.dll
           EOF
