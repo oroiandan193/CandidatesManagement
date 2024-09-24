@@ -51,8 +51,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_KEY }} 
           port: 22  # Default SSH port
-          source: deploy-package.tar.gz
-          target: ${{ secrets.APP_DIRECTORY }}  # Make sure this is correct
+          source: ./deploy-package.tar.gz
+          target: "${{ secrets.APP_DIRECTORY }}"  # Make sure this is correct
 
       - name: Connect to EC2 and deploy
         run: |
