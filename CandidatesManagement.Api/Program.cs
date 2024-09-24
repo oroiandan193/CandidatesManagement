@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapPost("/candidates", async (UpsertJobCandidateDto request, ICandidatesService service, IValidator<UpsertJobCandidateDto> validator) => {
 
