@@ -25,17 +25,11 @@ jobs:
       - name: Publish the app
         run: dotnet publish --configuration Release --output ./publish
 
-      - name: Prepare deployment package
-        run: tar -czvf deploy-package.tar.gz -C ./publish .
-
-      - name: Remove publish output
-        run: rm ./publish
-
       - name: Upload Artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: build
-          path: build
+          path: ./publish
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,15 +37,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Download Artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v3
         with:
           name: build
           path: build
-          
-      - name: Setup SSH agent
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}  # Set in GitHub Secrets
+      - name: Display structure of downloaded files
+        run: ls -R
           
       - name: Copy files to EC2
         uses: appleboy/scp-action@v0.1.7
@@ -60,19 +51,12 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_KEY }} 
           port: 22  # Default SSH port
-          source: ./deploy-package.tar.gz
+          source: build
           target: "${{ secrets.APP_DIRECTORY }}"  # Make sure this is correct
 
       - name: Connect to EC2 and deploy
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ${{ secrets.APP_DIRECTORY }}
-            tar -xzvf deploy-package.tar.gz
-            # Stop the running service if it exists
-            sudo systemctl stop myapp.service || true
-            # Move new files into the service folder
-            mv publish/* /var/www/myapp/
-            # Restart the application
-            sudo systemctl start myapp.service
-            sudo systemctl status myapp.service
+            dotnet CandidatesManagement.Api.dll
           EOF
