@@ -1,0 +1,60 @@
+name: Build and Deploy ASP.NET Core App to EC2
+
+on:
+  workflow_dispatch:  # This enables manual runs from the GitHub UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.x'  # Set your target .NET version
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build the app
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish the app
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: Prepare deployment package
+        run: tar -czvf deploy-package.tar.gz -C ./publish .
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download build artifact
+        run: echo "Downloading and deploying the build artifact."
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}  # Set in GitHub Secrets
+
+      - name: Copy files to EC2
+        run: |
+          scp -o StrictHostKeyChecking=no -r deploy-package.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.APP_DIRECTORY }}
+
+      - name: Connect to EC2 and deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd ${{ secrets.APP_DIRECTORY }}
+            tar -xzvf deploy-package.tar.gz
+            # Stop the running service if it exists
+            sudo systemctl stop myapp.service || true
+            # Move new files into the service folder
+            mv publish/* /var/www/myapp/
+            # Restart the application
+            sudo systemctl start myapp.service
+            sudo systemctl status myapp.service
+          EOF
