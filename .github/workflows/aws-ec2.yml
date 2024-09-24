@@ -43,7 +43,7 @@ jobs:
 
       - name: Copy files to EC2
         run: |
-          scp -o StrictHostKeyChecking=no -r deploy-package.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.APP_DIRECTORY }}
+          scp -o StrictHostKeyChecking=no -r ./deploy-package.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.APP_DIRECTORY }}
 
       - name: Connect to EC2 and deploy
         run: |
