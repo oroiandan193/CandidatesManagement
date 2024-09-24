@@ -64,5 +64,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd "${{ secrets.APP_DIRECTORY }}/build"
             ls -R
-            dotnet CandidatesManagement.Api.dll
+            sudo systemctl start myapp.service
           EOF
