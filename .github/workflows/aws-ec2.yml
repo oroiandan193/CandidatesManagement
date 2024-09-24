@@ -28,22 +28,31 @@ jobs:
       - name: Prepare deployment package
         run: tar -czvf deploy-package.tar.gz -C ./publish .
 
+      - name: Remove publish output
+        run: rm ./publish
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: build
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
-
     steps:
-      - name: Download build artifact
-        run: echo "Downloading and deploying the build artifact."
-
+      - uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: build
+          path: build
+          
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}  # Set in GitHub Secrets
-
-      - name: Echo Location
-        run: echo "${{ secrets.APP_DIRECTORY }}"
-        
+          
       - name: Copy files to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
