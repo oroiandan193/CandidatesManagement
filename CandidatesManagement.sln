@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Api", "CandidatesManagement.Api\CandidatesManagement.Api.csproj", "{CC428AF3-8715-471B-97D9-DBF45D3E29ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.Api", "CandidatesManagement.Api\CandidatesManagement.Api.csproj", "{CC428AF3-8715-471B-97D9-DBF45D3E29ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Core", "CandidatesManagement.Core\CandidatesManagement.Core.csproj", "{CEA174F0-F4D6-442D-B21A-0C2391FC8282}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.Core", "CandidatesManagement.Core\CandidatesManagement.Core.csproj", "{CEA174F0-F4D6-442D-B21A-0C2391FC8282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Application", "CandidatesManagement.Application\CandidatesManagement.Application.csproj", "{8522357F-BED3-4B25-BC9A-094DAAA5131E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.Application", "CandidatesManagement.Application\CandidatesManagement.Application.csproj", "{8522357F-BED3-4B25-BC9A-094DAAA5131E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Persistence.Sql", "CandidatesManagement.Persistence.Sql\CandidatesManagement.Persistence.Sql.csproj", "{575A3AB8-C365-4B11-BE86-29EDACF9B83E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.Persistence.Sql", "CandidatesManagement.Persistence.Sql\CandidatesManagement.Persistence.Sql.csproj", "{575A3AB8-C365-4B11-BE86-29EDACF9B83E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.UnitTests", "CandidatesManagement.UnitTests\CandidatesManagement.UnitTests.csproj", "{50FA3333-57AA-4911-847B-16BB94C8E6DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.UnitTests", "CandidatesManagement.UnitTests\CandidatesManagement.UnitTests.csproj", "{50FA3333-57AA-4911-847B-16BB94C8E6DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidatesManagement.Infrastructure", "CandidatesManagement.Infrastructure\CandidatesManagement.Infrastructure.csproj", "{33B0D4E5-6241-459B-B884-6114187ED632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidatesManagement.Infrastructure", "CandidatesManagement.Infrastructure\CandidatesManagement.Infrastructure.csproj", "{33B0D4E5-6241-459B-B884-6114187ED632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AEF0ACD-9F9D-416D-A398-F7E4442290F0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\aws-ec2.yml = .github\workflows\aws-ec2.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
